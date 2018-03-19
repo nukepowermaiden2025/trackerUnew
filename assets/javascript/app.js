@@ -31,11 +31,11 @@
 
 //Create variables for user form input
 
-var mealtype = $("#meal-type-input").val().trim();
-var mealtime = moment($("#meal-start-input").val().trim(), "DD/MM/YY").format("X")
+var mealType = $("#meal-type-input").val().trim();
+var mealTime = moment($("#meal-start-input").val().trim(), "DD/MM/YY").format("X")
 var snackFreq= $("#snack-freq-input").val().trim();
-var codingtype= $("#employee-name-input").val().trim();
-var codetime= moment($(".start-input").val().trim(), "DD/MM/YY").format("X");
+var codingType= $("#employee-name-input").val().trim();
+var codeTime= moment($(".start-input").val().trim(), "DD/MM/YY").format("X");
 var breakFreq= $("#break-freq-input").val().trim();
 
 
@@ -43,19 +43,33 @@ var breakFreq= $("#break-freq-input").val().trim();
 $(meal-start-input).on("click",function(event){
     event.preventDefault();
 
+    var newMeal ={
+        mltype: mealType,
+        mltime: mealTime,
+        snfreq: snackFreq
+    };
+
+    database.ref("meal").push(newMeal);
+})
+
+
+
+$(code-start-input).on("click",function(event){
+    event.preventDefault();
     
-
-
-
-    database.ref().set({
-    counter: count
-    });
+    var newCodeSesh ={
+        cdtype:codingType,
+        cdtime: codeTime,
+        brfreq:breakFreq
+    }
+    
+    database.ref("meal").push(newCodeSesh);
 })
 
 
 //Create selectors for the inputs
 
-    //mealtype
+    //mealType
     //first snack
     //frequency1
     //coding type
@@ -65,7 +79,7 @@ $(meal-start-input).on("click",function(event){
 //Link inputs to firebase database
 
 //Retrieve from firebase
-//Mealtype
+//mealType
 //retrieve eat time
 //ues momentJS to get next snack time
 //Componenttype
