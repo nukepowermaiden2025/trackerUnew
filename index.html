@@ -1,0 +1,183 @@
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Rammetto+One" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>TrackerU</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Tracker</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Connect With Me</a>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+    <div class="jumbotron-fluid" id="background">
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="jumbotron">
+            <p class="title-display">TrackerU</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="jumbotron">
+            <p class="player-display player1">Meal Time</p>
+                    <!-- Current Employees-->
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title"><strong>Current Snack Targets</strong></h3>
+              </div>
+              <div class="panel-body">
+                <table class="table table-hover" id='employee-table'>
+                  <thead>
+                    <tr>
+                      <th>Meal Type</th>
+                      <th>Eat Time</th>
+                      <th>Next Snack</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <form>
+                <div class="form-group">
+                  <label for="type-input">Meal Type</label>
+                  <input class="form-control" id="type-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="start-input">First Snack Time (HH:mm- military time)</label>
+                  <input class="form-control" id="start-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="freq-input">Frequency</label>
+                  <input class="form-control" id="freq-input" type="text">
+                </div>
+                <button class="btn btn-primary" id="add-employee-btn" type="submit">Submit</button>
+              </form>
+            
+            
+          </div>
+        </div>
+
+
+
+        <div class="col-lg-6">
+          <div class="jumbotron">
+            <p class="player-display player2">Coding Time</p>
+             <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title"><strong>Coding Break Targets</strong></h3>
+              </div>
+              <div class="panel-body">
+                <table class="table table-hover" id='employee-table'>
+                  <thead>
+                    <tr>
+                      <th>Coding Component</th>
+                      <th>Start Time</th>
+                      <th>Next Break</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+             <form>
+                <div class="form-group">
+                  <label for="type-input">Coding Type(Practice or Homework)</label>
+                  <input class="form-control" id="type-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="start-input">Start-Time (HH:mm- military time)</label>
+                  <input class="form-control" id="start-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="freq-input">Frequency</label>
+                  <input class="form-control" id="freq-input" type="text">
+                </div>
+                <button class="btn btn-primary" id="add-employee-btn" type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+    
+      
+ 
+          
+       
+          
+          
+        </div>
+      </div>
+
+      <footer class="footer">
+          <div class="container">
+            <p class="text-muted">Kourtney Reynolds 2018</p>
+          </div>
+        </footer>
+      </div>
+    
+    </div>
+
+ 
+
+
+  <!-- Input form for player to add themselves to the game -->
+
+
+
+  <!-- To display -->
+  <!-- Generate Player 1 Name -->
+  <!-- Generate Win/loose -->
+  <!-- Generate Player 2 Name -->
+  <!-- Waiting on Player 1 message -->
+  <!-- Waiting on Player 2 message -->
+  <!-- Player 1 Name  -->
+  <!-- Player 2 Name  -->
+  <!-- Player 1 Choice -->
+  <!-- Player 2 Choice -->
+
+  <!-- <button class="count-btn">Click it!</button> -->
+
+
+  <!-- ADD FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="./assets/javascript/app.js"></script>
+</body>
