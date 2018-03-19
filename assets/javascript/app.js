@@ -1,7 +1,7 @@
 // This is an app that will track the time that I am due for a snack based on the meal time put in for breakfast lunch or dinner
 // This will also track when I need to take breaks from coding
 
-
+console.log("JS is connected")
 
   // Initialize Firebase
   var config = {
@@ -29,43 +29,53 @@
 //     });
 //   })
 
-//Create variables for user form input
-
-var mealType = $("#meal-type-input").val().trim();
-var mealTime = moment($("#meal-start-input").val().trim(), "DD/MM/YY").format("X")
-var snackFreq= $("#snack-freq-input").val().trim();
-var codingType= $("#employee-name-input").val().trim();
-var codeTime= moment($(".start-input").val().trim(), "DD/MM/YY").format("X");
-var breakFreq= $("#break-freq-input").val().trim();
+$(document).ready(function() {
 
 
-//document ready
-$(meal-start-input).on("click",function(event){
-    event.preventDefault();
 
-    var newMeal ={
-        mltype: mealType,
-        mltime: mealTime,
-        snfreq: snackFreq
-    };
+    $("#add-meal-btn").on("click",function(event){
+        event.preventDefault();
 
-    database.ref("meal").push(newMeal);
+        console.log("I clicked meal button")
+
+        // //Create variables for user form input
+        // var mealType = $("#meal-type-input").val().trim();
+        // // var mealTime = moment($("#meal-start-input").val().trim(), "DD/MM/YY").format("X");
+        // var snackFreq= $("#snack-freq-input").val().trim();
+
+        // console.log(mealType);
+        // console.log(snackFreq);
+        // //add meal object to push to db
+        // var newMeal ={
+        //     mltype: mealType,
+        //     // mltime: mealTime,
+        //     snfreq: snackFreq
+        // };
+
+        // database.ref().push(newMeal);
+    });
+
+
+
+    $("#add-code-btn").on("click",function(event){
+        event.preventDefault();
+        console.log("I clicked code button")
+        // //Create variables for user form input
+        // var codingType= $("#code-type-input").val().trim();
+        // // var codeTime= moment($("#code-start-input").val().trim(), "DD/MM/YY").format("X");
+        // var breakFreq= $("#break-freq-input").val().trim();
+
+        // //add codesech object to push to db
+        // var newCodeSesh ={
+        //     cdtype:codingType,
+        //     // cdtime:firebase.database.ServerValue.TIMESTAMP,
+        //     brfreq:breakFreq
+        // }
+        
+        // database.ref().push(newCodeSesh);
+    });
+
 })
-
-
-
-$(code-start-input).on("click",function(event){
-    event.preventDefault();
-    
-    var newCodeSesh ={
-        cdtype:codingType,
-        cdtime: codeTime,
-        brfreq:breakFreq
-    }
-    
-    database.ref("meal").push(newCodeSesh);
-})
-
 
 //Create selectors for the inputs
 
