@@ -14,8 +14,11 @@ console.log("JS is connected")
   };
   firebase.initializeApp(config);
 
-  database = firebase.database();
+  var database = firebase.database();
 
+
+
+  
 //   var count =0;
  
 //   $(document).on("click",".count-btn",function(event){
@@ -32,27 +35,26 @@ console.log("JS is connected")
 $(document).ready(function() {
 
 
-
     $("#add-meal-btn").on("click",function(event){
         event.preventDefault();
 
         console.log("I clicked meal button")
 
-        // //Create variables for user form input
-        // var mealType = $("#meal-type-input").val().trim();
-        // // var mealTime = moment($("#meal-start-input").val().trim(), "DD/MM/YY").format("X");
-        // var snackFreq= $("#snack-freq-input").val().trim();
+        //Create variables for user form input
+        var mealType = $("#meal-type-input").val().trim();
+        var mealTime = firebase.database.ServerValue.TIMESTAMP
+        var snackFreq= $("#snack-freq-input").val().trim();
 
-        // console.log(mealType);
-        // console.log(snackFreq);
-        // //add meal object to push to db
-        // var newMeal ={
-        //     mltype: mealType,
-        //     // mltime: mealTime,
-        //     snfreq: snackFreq
-        // };
+        console.log(mealType);
+        console.log(snackFreq);
+        //add meal object to push to db
+        var newMeal ={
+            mltype: mealType,
+            mltime: mealTime,
+            snfreq: snackFreq
+        };
 
-        // database.ref().push(newMeal);
+        database.ref('meal').push(newMeal);
     });
 
 
@@ -60,19 +62,21 @@ $(document).ready(function() {
     $("#add-code-btn").on("click",function(event){
         event.preventDefault();
         console.log("I clicked code button")
-        // //Create variables for user form input
-        // var codingType= $("#code-type-input").val().trim();
-        // // var codeTime= moment($("#code-start-input").val().trim(), "DD/MM/YY").format("X");
-        // var breakFreq= $("#break-freq-input").val().trim();
+        //Create variables for user form input
+        var codingType= $("#code-type-input").val().trim();
+        var codeTime= firebase.database.ServerValue.TIMESTAMP
+        var breakFreq= $("#break-freq-input").val().trim();
+        console.log(codingType);
+        console.log(breakFreq);
 
-        // //add codesech object to push to db
-        // var newCodeSesh ={
-        //     cdtype:codingType,
-        //     // cdtime:firebase.database.ServerValue.TIMESTAMP,
-        //     brfreq:breakFreq
-        // }
+        //add codesech object to push to db
+        var newCodeSesh ={
+            cdtype:codingType,
+            cdtime:codeTime,
+            brfreq:breakFreq
+        }
         
-        // database.ref().push(newCodeSesh);
+        database.ref('code').push(newCodeSesh);
     });
 
 })
