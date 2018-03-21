@@ -86,7 +86,7 @@ $(document).ready(function() {
 
     });
 
-    database.ref("meal").on("child_added", function(snapshot){
+    database.ref("meal").limitToLast(1).on("child_added", function(snapshot){
         //create a convienec variable for snapshot for meal
         const sv = snapshot.val();
 
@@ -94,17 +94,17 @@ $(document).ready(function() {
         console.log(sv.mealTime);
         console.log(sv.snackFreq);
 
-        
+
 
         $("#snack-table > tbody").append(
             "<tr><td>"  
             + sv.mealTime + "</td><td>" 
             + sv.mealTime + "</td><td>" //TODO ADD MOMENT AND CALC THE NEXT MEAL
-            + snackFreq + "</td></tr>");
+            + sv.snackFreq + "</td></tr>");
 
     });
 
-    database.ref("code").on("child_added", function(snapshot){
+    database.ref("code").limitToLast(1).on("child_added", function(snapshot){
         //create a convienec variable for snapshot for code
         const sv = snapshot.val();
 
@@ -116,7 +116,7 @@ $(document).ready(function() {
             "<tr><td>"  
             + sv.codingType + "</td><td>" 
             + sv.codeTime + "</td><td>" //TODO ADD MOMENT AND CALC THE NEXT BREAK
-            + breakFreq + "</td></tr>");
+            + sv.breakFreq + "</td></tr>");
     });
    
    
