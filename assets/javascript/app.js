@@ -15,12 +15,9 @@ console.log("JS is connected")
   firebase.initializeApp(config);
 
   var database = firebase.database();
-
-
-
   
 //   var count =0;
- //TEST
+// //  TEST
 //   $(document).on("click",".count-btn",function(event){
 //       event.preventDefault();
 
@@ -42,25 +39,26 @@ $(document).ready(function() {
 
         //Create variables for user form input
         var mealType = $("#meal-type-input").val().trim();
+        var firstMeal = $("#meal-start-input").val("");
         var mealTime = firebase.database.ServerValue.TIMESTAMP
         var snackFreq= $("#snack-freq-input").val().trim();
-
-        console.log(mealType);
-        console.log(snackFreq);
+        
+        
         //add meal object to push to db
         var newMeal ={
             mealType: mealType,
+            firstMeal:firstMeal,
             mealTime: mealTime,
             snackFreq: snackFreq
         };
 
         database.ref('meal').push(newMeal);
-
+        // clear the user inputs
         $("#meal-type-input").val("");
+        $("#meal-start-input").val("");
         $("#snack-freq-input").val("");
+        
     });
-
-
 
     $("#add-code-btn").on("click",function(event){
         event.preventDefault();
@@ -86,25 +84,23 @@ $(document).ready(function() {
 
     });
 
-    database.ref("meal").limitToLast(1).on("child_added", function(snapshot){
+    database.ref("meal").limitToLast(3).on("child_added", function(snapshot){
+        event.preventDefault();
         //create a convienec variable for snapshot for meal
         const sv = snapshot.val();
-
-        console.log(sv.mealType);
-        console.log(sv.mealTime);
-        console.log(sv.snackFreq);
-
-
-
+        var time = moment(sv.mealTime).format("hh:mm a");
+        // var timeDiff = moment().diff(time, "minutes");
+        
         $("#snack-table > tbody").append(
             "<tr><td>"  
-            + sv.mealTime + "</td><td>" 
-            + sv.mealTime + "</td><td>" //TODO ADD MOMENT AND CALC THE NEXT MEAL
+            + sv.mealType + "</td><td>" 
+            + time + "</td><td>" //TODO ADD MOMENT AND CALC THE NEXT MEAL
             + sv.snackFreq + "</td></tr>");
 
     });
 
-    database.ref("code").limitToLast(1).on("child_added", function(snapshot){
+    database.ref("code").limitToLast(3).on("child_added", function(snapshot){
+        event.preventDefault();
         //create a convienec variable for snapshot for code
         const sv = snapshot.val();
 
@@ -118,6 +114,7 @@ $(document).ready(function() {
             + sv.codeTime + "</td><td>" //TODO ADD MOMENT AND CALC THE NEXT BREAK
             + sv.breakFreq + "</td></tr>");
     });
+   
    
    
 
