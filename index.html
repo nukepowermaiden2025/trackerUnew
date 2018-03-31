@@ -52,27 +52,7 @@
         <div class="col-lg-6">
           <div class="jumbotron">
             <p class="player-display player1">Meal Time</p>
-            <!-- Current Employees-->
-            <div class="panel panel-primary">
-              <div class="panel-heading">
-                <h3 class="panel-title">
-                  <strong>Current Snack Targets</strong>
-                </h3>
-              </div>
-              <div class="panel-body">
-                <table class="table table-hover" id='snack-table'>
-                  <thead>
-                    <tr>
-                      <th>Meal Type</th>
-                      <th>Eat Time</th>
-                      <th>Next Snack</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            <!-- Current Meals-->
             <form>
               <div class="form-group">
                 <label for="type-input">Meal Type</label>
@@ -97,20 +77,21 @@
 
         <div class="col-lg-6">
           <div class="jumbotron">
-            <p class="player-display player2">Coding Time</p>
+            <p class="player-display player1">Meal Time</p>
+            <!-- Current Meals-->
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <h3 class="panel-title">
-                  <strong>Coding Break Targets</strong>
+                  <strong>Current Snack Targets</strong>
                 </h3>
               </div>
               <div class="panel-body">
-                <table class="table table-hover" id='break-table'>
+                <table class="table table-hover" id='snack-table'>
                   <thead>
                     <tr>
-                      <th>Coding Component</th>
-                      <th>Start Time</th>
-                      <th>Next Break</th>
+                      <th>Meal Type</th>
+                      <th>Eat Time</th>
+                      <th>Next Snack</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -118,21 +99,6 @@
                 </table>
               </div>
             </div>
-            <form>
-              <div class="form-group">
-                <label for="type-input">Coding Type(Practice or Homework)</label>
-                <input class="form-control" id="code-type-input" type="text">
-              </div>
-              <!-- <div class="form-group">
-                <label for="start-input">Start-Time (HH:mm- military time)</label>
-                <input class="form-control" id="code-start-input" type="text">
-              </div> -->
-              <div class="form-group">
-                <label for="freq-input">Frequency</label>
-                <input class="form-control" id="break-freq-input" type="text">
-              </div>
-              <button class="btn btn-primary count-btn" id="add-code-btn" type="submit">Submit</button>
-            </form>
           </div>
         </div>
 

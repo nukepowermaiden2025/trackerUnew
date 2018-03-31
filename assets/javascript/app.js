@@ -38,10 +38,10 @@ $(document).ready(function() {
         console.log("I clicked meal button")
 
         //Create variables for user form input
-        var mealType = $("#meal-type-input").val().trim();
-        var firstMeal = $("#meal-start-input").val("");
-        var mealTime = firebase.database.ServerValue.TIMESTAMP
-        var snackFreq= $("#snack-freq-input").val().trim();
+        var mealType = $("#meal-type-input").val().trim();//Meal type from user
+        var firstMeal = $("#meal-start-input").val("");//First meal of the day
+        var mealTime = firebase.database.ServerValue.TIMESTAMP//Time when the child is pushed
+        var snackFreq= $("#snack-freq-input").val().trim();//Snack frequency in minutes
         
         
         //add meal object to push to db
@@ -86,19 +86,33 @@ $(document).ready(function() {
 
     database.ref("meal").limitToLast(3).on("child_added", function(snapshot){
         event.preventDefault();
-        //create a convienec variable for snapshot for meal
+       
         const sv = snapshot.val();
-        var time = moment(sv.mealTime).format("hh:mm a");
-        // var timeDiff = moment().diff(time, "minutes");
-        
-        $("#snack-table > tbody").append(
-            "<tr><td>"  
-            + sv.mealType + "</td><td>" 
-            + time + "</td><td>" //TODO ADD MOMENT AND CALC THE NEXT MEAL
-            + sv.snackFreq + "</td></tr>");
+
+        //Push back 1 year to ensure that it comes before the current time
+        var firstTime = moment(sv.firstMeal, "HH:mm").subtract(1,"years");
+        console.log(firstTime);
+       
+        //Get the currentTime
+        let currentTime = moment();
+        //  moment(sv.mealTime).format("hh:mm");
+        console.log(currentTime);
+
+        //Get the time difference
+        let timeDiff = moment().diff(firstTime, "minutes");
+        console.log(timeDiff);
+
+        // //Get the first meal time of the day
+        // //Get the frequecy of the meals for the day 
+        // let timeNextMeal;
+        // $("#snack-table > tbody").append(
+        //     "<tr><td>"  
+        //     + sv.mealType + "</td><td>" 
+        //     + timeNextMeal + "</td><td>" //TODO ADD MOMENT AND CALC THE NEXT MEAL
+        //     + sv.snackFreq + "</td></tr>");
 
     });
-
+    //create the database snapshot that will constantly run to load the page
     database.ref("code").limitToLast(3).on("child_added", function(snapshot){
         event.preventDefault();
         //create a convienec variable for snapshot for code
