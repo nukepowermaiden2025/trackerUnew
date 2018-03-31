@@ -60,47 +60,28 @@ $(document).ready(function() {
         
     });
 
-    $("#add-code-btn").on("click",function(event){
-        event.preventDefault();
-        console.log("I clicked code button")
-        //Create variables for user form input
-        var codingType= $("#code-type-input").val().trim();
-        var codeTime= firebase.database.ServerValue.TIMESTAMP
-        var breakFreq= $("#break-freq-input").val().trim();
-        console.log(codingType);
-        console.log(breakFreq);
-
-        //add codesech object to push to db code child
-        var newCodeSesh ={
-            codingType:codingType,
-            codeTime:codeTime,
-            breakFreq:breakFreq
-        };
-        
-        database.ref('code').push(newCodeSesh);
-
-        $("#code-type-input").val("");
-        $("#break-freq-input").val("");
-
-    });
+   
 
     database.ref("meal").limitToLast(3).on("child_added", function(snapshot){
         event.preventDefault();
        
         const sv = snapshot.val();
 
-        //Push back 1 year to ensure that it comes before the current time
+       //Grab first time from the user and conver to a moment object
         var firstTime = moment(sv.firstMeal, "HH:mm").subtract(1,"years");
         console.log(firstTime);
-       
+      
         //Get the currentTime
         let currentTime = moment();
-        //  moment(sv.mealTime).format("hh:mm");
+        console.log(moment(currentTime).format("hh:mm"));
         console.log(currentTime);
 
-        //Get the time difference
-        let timeDiff = moment().diff(firstTime, "minutes");
-        console.log(timeDiff);
+        var diffTime = moment().diff(firstTime,"minutes");
+        console.log(diffTime);
+
+        // //Get the time difference
+        // let time                    Diff = moment().diff(firstTime, "minutes");
+        // console.log(timeDiff);
 
         // //Get the first meal time of the day
         // //Get the frequecy of the meals for the day 
@@ -113,21 +94,7 @@ $(document).ready(function() {
 
     });
     //create the database snapshot that will constantly run to load the page
-    database.ref("code").limitToLast(3).on("child_added", function(snapshot){
-        event.preventDefault();
-        //create a convienec variable for snapshot for code
-        const sv = snapshot.val();
-
-        console.log(sv.codingType);
-        console.log(sv.codeTime);
-        console.log(sv.breakFreq);
-
-        $("#break-table > tbody").append(
-            "<tr><td>"  
-            + sv.codingType + "</td><td>" 
-            + sv.codeTime + "</td><td>" //TODO ADD MOMENT AND CALC THE NEXT BREAK
-            + sv.breakFreq + "</td></tr>");
-    });
+   
    
    
    
